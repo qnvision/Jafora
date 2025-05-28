@@ -1,0 +1,51 @@
+<mvc:View xmlns:l="sap.ui.layout" xmlns:ndc="sap.ndc" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="Jaf.JaforaMasofon.controller.MachineContent" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page showHeader="false">
+				<VBox class="WholeAppBox">
+					<HBox class="imgAndHomeIconBox">
+						<Image src="images/jaforaLogo.png" width="72px" height="47px"/>
+						<HBox class="iconAndButton">
+							<Image src="images/homeIcon.png" width="45px" height="45px" press="openAreYouSure"/>
+							<Button icon="sap-icon://arrow-right" type="Transparent" class="arrowBackButton" press="navToMachinePage"/>
+						</HBox>
+					</HBox>
+					<Text text="{i18n>machineOrMaterial}:" class="headersStyle"/>
+					<HBox class="inputAndHistory">
+						<Input id="productInput" class="barcodeButton2" value="{appData>/whatscanned}" placeholder="{i18n>ScanMachine}"/>
+						<VBox width="auto">
+							<Button icon="sap-icon://history" type="Transparent" class="historyButton" press="openHistoryDialog"/>
+						</VBox>
+					</HBox>
+					<HBox class="machineDetails">
+						<HBox class="inlineMachineDetailsRight">
+							<Text text="{i18n>machineLine}:" class="headersStyle"/>
+							<Text text="{appData>/scannedMachine/0/Workcenter}" class="headersStyle1"/>
+						</HBox>
+						<Text text="|" class="headersStyle"/>
+						<HBox class="inlineMachineDetailsLeft">
+							<Text text="{i18n>machineWorkOrder}:" class="headersStyle"/>
+							<Text text="{appData>/scannedMachine/0/Workorder}" class="headersStyle1"/>
+						</HBox>
+					</HBox>
+					<OverflowToolbar class="Toolbar"></OverflowToolbar>
+					<HBox class="inlineMachineDetails1">
+						<Text text="{i18n>machineName}:" class="headersStyle"/>
+						<Text text="{appData>/scannedMachine/0/Machinedesc}" class="headersStyle1"/>
+					</HBox>
+					<List id="materialList" class="customListItem" items="{appData>/allowedSKUs}">
+						<CustomListItem>
+							<FlexBox id="gridFlexBox">
+								<VBox class="gridVbox">
+									<Text text="{appData>Material}" class="gridText"/>
+									<Text text="{appData>Materialdescription}" class="gridTextDesc"/>
+								</VBox>
+							</FlexBox>
+						</CustomListItem>
+					</List>
+				</VBox>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

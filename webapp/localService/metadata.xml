@@ -1,0 +1,58 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZQV_MASOFON_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="AllowedSku" sap:content-version="1">
+				<Key><PropertyRef Name="Workcenter"/><PropertyRef Name="Site"/></Key><Property Name="Workcenter" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Work center"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Site" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Workorder" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Order" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Materialdescription" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="MaterialCheck" sap:content-version="1">
+				<Key><PropertyRef Name="Workcenter"/><PropertyRef Name="Materialnumber"/></Key><Property Name="Workcenter" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Work center"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Materialnumber" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="הודעה" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Identification" sap:content-version="1">
+				<Key><PropertyRef Name="Zempoj"/></Key><Property Name="Zempoj" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Emp Number" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zenamej" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Emp Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zstname" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Station name"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="MachineScan" sap:content-version="1">
+				<Key><PropertyRef Name="Workcenter"/><PropertyRef Name="Worksite"/></Key><Property Name="Workcenter" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Work center"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Worksite" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Workorder" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Order" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Linedesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Machinedesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="AllowedSkuNav" Relationship="ZQV_MASOFON_SRV.AllowedSkuAsc" FromRole="FromRole_AllowedSkuAsc"
+					ToRole="ToRole_AllowedSkuAsc"/></EntityType>
+			<EntityType Name="ScanHistory" sap:content-version="1">
+				<Key><PropertyRef Name="Werks"/><PropertyRef Name="Arbpl"/></Key><Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Arbpl" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Work center" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Order" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LastOn" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Checked On" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LastAt" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Checked At" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel no." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ChangedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Result1" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="תוצאה" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="הודעה" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<Association Name="AllowedSkuAsc" sap:content-version="1"><End Type="ZQV_MASOFON_SRV.MachineScan" Multiplicity="*" Role="FromRole_AllowedSkuAsc"/><End Type="ZQV_MASOFON_SRV.AllowedSku" Multiplicity="*" Role="ToRole_AllowedSkuAsc"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_AllowedSkuAsc"><PropertyRef Name="Worksite"/><PropertyRef Name="Workcenter"/></Principal>
+					<Dependent Role="ToRole_AllowedSkuAsc"><PropertyRef Name="Site"/><PropertyRef Name="Workcenter"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZQV_MASOFON_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="AllowedSkuSet" EntityType="ZQV_MASOFON_SRV.AllowedSku" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="MaterialCheckSet" EntityType="ZQV_MASOFON_SRV.MaterialCheck" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="IdentificationSet" EntityType="ZQV_MASOFON_SRV.Identification" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="MachineScanSet" EntityType="ZQV_MASOFON_SRV.MachineScan" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ScanHistorySet" EntityType="ZQV_MASOFON_SRV.ScanHistory" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<AssociationSet Name="AllowedSkuAscSet" Association="ZQV_MASOFON_SRV.AllowedSkuAsc" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="MachineScanSet" Role="FromRole_AllowedSkuAsc"/><End EntitySet="AllowedSkuSet" Role="ToRole_AllowedSkuAsc"/></AssociationSet>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZQV_MASOFON_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZQV_MASOFON_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,160 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "Jaf.JaforaMasofon",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"ZQV_MASOFON_SRV": {
+				"uri": "/sap/opu/odata/sap/ZQV_MASOFON_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"appDataSrc": {
+				"uri": "model/appData.json",
+				"type": "JSON"
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "Jaf.JaforaMasofon.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "App"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ndc": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "Jaf.JaforaMasofon.i18n.i18n"
+				}
+			},
+			"appData": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "appDataSrc"
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"useBatch": false
+				},
+				"dataSource": "ZQV_MASOFON_SRV",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "Jaf.JaforaMasofon.view",
+				"controlAggregation": "pages",
+				"controlId": "rootControl",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "TargetApp",
+					"pattern": "RouteApp",
+					"target": [
+						"TargetApp"
+					],
+					"greedy": false
+				},
+				{
+					"name": "homePage",
+					"pattern": "",
+					"target": "homePage",
+					"greedy": false
+				},
+				{
+					"name": "MachinePage",
+					"pattern": "MachinePage",
+					"target": "MachinePage"
+				},
+				{
+					"name": "MachineContent",
+					"pattern": "MachineContent",
+					"target": "MachineContent"
+				}
+			],
+			"targets": {
+				"TargetApp": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "App",
+					"viewName": "App"
+				},
+				"homePage": {
+					"viewType": "XML",
+					"viewName": "homePage"
+				},
+				"MachinePage": {
+					"viewType": "XML",
+					"viewName": "MachinePage"
+				},
+				"MachineContent": {
+					"viewType": "XML",
+					"viewName": "MachineContent"
+				}
+			}
+		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zmasofonapp/webapp",
+		"_version": "1.1.0"
+	}
+}

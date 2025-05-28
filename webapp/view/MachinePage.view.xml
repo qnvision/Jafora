@@ -1,0 +1,16 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:ndc="sap.ndc" xmlns="sap.m"
+	controllerName="Jaf.JaforaMasofon.controller.MachinePage" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<VBox class="WholeAppBox">
+			<HBox class="imgAndHomeIconBox">
+				<Image src="images/jaforaLogo.png" width="72px" height="47px" />
+				<Image src="images/homeIcon.png" width="45px" height="45px" press="navToHomePage"/>
+			</HBox>
+			<VBox class="MachinePageBox">
+				<Text text="{i18n>toStartWorkingScan}" class="headersStyle machineBarcodeHeader" id="jaforaLogo"/>
+			</VBox>
+			<Text text="{i18n>Machine}:" class="headersStyle"/>
+			<Input id="productInput2" class="barcodeButton" editable="false" value="{appData>/scanResult}" placeholder="{i18n>ScanMachine}" />
+		</VBox>
+	</App>
+</mvc:View>

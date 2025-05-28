@@ -1,0 +1,32 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout">
+	<Dialog stretch="true" showHeader="false" id="MoreHistoryDialog" class="moreHistoryDialog">
+		<l:VerticalLayout class="sapUiContentPadding" width="100%">
+			<l:content>
+				<List binding="{appData>/MoreHistoryMaterial}" headerText="{i18n>ExtraInfo}">
+					<CustomListItem>
+						<HBox justifyContent="SpaceBetween" class="resultInHistory">
+							<Text class="result1History" text="{i18n>Result1}"/>
+							<HBox>
+								<HBox class="iconBase acceptIcon" visible="{= ${appData>Result1} === true }">
+									<core:Icon src="sap-icon://accept"/>
+								</HBox>
+								<HBox class="iconBase declineIcon" visible="{= ${appData>Result1} === false }">
+									<core:Icon src="sap-icon://decline"/>
+								</HBox>
+							</HBox>
+						</HBox>
+					</CustomListItem>
+					<DisplayListItem label="{i18n>machineWorkOrder}" value="{appData>/scannedMachine/0/Workorder}"/>
+					<DisplayListItem label="{i18n>Material}" value="{appData>Material}"/>
+					<DisplayListItem label="{i18n>Date}" value="{path: 'appData>LastOn', formatter: '.formatDate'}"/>
+					<DisplayListItem label="{i18n>Time}" value="{path: 'appData>LastAt', formatter: '.formatTime'}"/>
+					<DisplayListItem label="{i18n>workerNumber}" value="{appData>Pernr}"/>
+					<DisplayListItem label="{i18n>machineName}" value="{appData>/scannedMachine/0/Machinedesc}"/>
+				</List>
+			</l:content>
+		</l:VerticalLayout>
+		<HBox class="CloseMoreHistoryButton">
+			<Button text="{i18n>close}" type="Transparent" class="agreeButton" press="closeMoreHistoryDialog"></Button>
+		</HBox>
+	</Dialog>
+</core:FragmentDefinition>

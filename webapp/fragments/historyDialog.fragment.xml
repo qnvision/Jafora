@@ -1,0 +1,62 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+	<Dialog stretch="true" showHeader="false" id="historyDialog" class="history">
+		<VBox class="WholeAppBox">
+			<HBox class="imgAndHomeIconBox">
+				<Image src="images/jaforaLogo.png" width="72px" height="47px"/>
+				<HBox class="iconAndButton">
+					<Button icon="sap-icon://decline" type="Transparent" class="arrowBackButton" press="closeHistoryDialog"/>
+				</HBox>
+			</HBox>
+			<HBox class="inlineMachineDetails1">
+				<Text text="{i18n>machineName}:" class="headersStyle"/>
+				<Text text="{appData>/scannedMachine/0/Machinedesc}" class="headersStyle1"/>
+			</HBox>
+			<HBox class="historyBox">
+				<Text class="headersStyle" text="{i18n>scanHistory}"/>
+			</HBox>
+			<Table class="customTable" items="{appData>/ScanHistory}" sticky="ColumnHeaders">
+				<columns>
+					<Column class="borderRadiusRight">
+						<Text class="headerTextSmall" text="{i18n>Sku}"/>
+					</Column>
+					<Column>
+						<Text class="headerTextSmall" text="{i18n>Date}"/>
+					</Column>
+					<Column>
+						<Text class="headerTextSmall" text="{i18n>Time}"/>
+					</Column>
+					<Column class="borderRadiusLeft">
+						<Text class="headerTextSmall" text="{i18n>propriety}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<VBox class="contentTextBold">
+								<Text class="contentTextBold" text="{appData>Material}"/>
+							</VBox>
+							<HBox class="contentTextBold3">
+								<Text class="contentTextBold" text="{path: 'appData>LastOn', formatter: '.formatDate'}"/>
+							</HBox>
+							<HBox class="contentTextBold3">
+								<Text class="contentTextBold" text="{path: 'appData>LastAt', formatter: '.formatTime'}"/>
+							</HBox>
+							<HBox class="iconAndFeeder">
+								<HBox class="iconBase acceptIcon" visible="{= ${appData>Result1} === true }">
+									<core:Icon src="sap-icon://accept"/>
+								</HBox>
+								<HBox class="iconBase declineIcon" visible="{= ${appData>Result1} === false }">
+									<core:Icon src="sap-icon://decline"/>
+								</HBox>
+								<Button icon="sap-icon://feeder-arrow" type="Transparent" class="feedArrow" press="MoreHistoryDetails"/>
+							</HBox>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<HBox class="agreeButtonBox">
+				<Button text="{i18n>close}" type="Transparent" class="agreeButton" press="closeHistoryDialog"></Button>
+			</HBox>
+		</VBox>
+	</Dialog>
+</core:FragmentDefinition>

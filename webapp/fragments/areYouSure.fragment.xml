@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+	<Dialog showHeader="false" id="areYouSure" class="areYouSureDialog">
+		<VBox class="areYouSureBox">
+			<HBox class="disconnectText" width="100%">
+				<Text width="100%" text="{i18n>disconnection}"/>
+			</HBox>
+			<HBox width="100%" class="toolbarHbox">
+				<OverflowToolbar class="areYouSureToolBar"></OverflowToolbar>
+			</HBox>
+			<HBox class="disconnectText2" width="100%">
+				<Text text="{i18n>areYouSure}"/>
+			</HBox>
+			<VBox class="agreeButtonBox2">
+				<Button text="{i18n>disconnect}" type="Transparent" class="agreeButton" press="closeAreYouSure"></Button>
+				<Button text="{i18n>cancel}" type="Transparent" class="cancelButton" press="closeAreYouSure2"></Button>
+			</VBox>
+		</VBox>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,28 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="Jaf.JaforaMasofon.controller.homePage"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:ndc="sap.ndc">
+	<App>
+		<VBox class="WholeAppBox">
+			<VBox class="imgBox">
+				<Image src="images/jaforaLogo.png" width="72px" height="47px"/>
+			</VBox>
+			<VBox class="mainHeaderBox">
+				<Text text="{i18n>workLanguage}:" class="headersStyle"/>
+				<HBox class="LanguageButtonsBox">
+					<Button id="hebrewButton" text="HE" class="HebrewButton" type="Transparent" press="onLanguageButtonPress"/>
+					<Button id="russianButton" text="RU" class="RussianButton" type="Transparent" press="onLanguageButtonPress"/>
+				</HBox>
+			</VBox>
+			<VBox class="WorkerNumberVBox">
+				<Text text="{i18n>workerNumber}:" class="headersStyle workerNumber"/>
+				<Input id="workerNumberInput" class="workerNumberInput" placeholder="{i18n>yourName}" showSuggestion="true" value="{appData>/Zenamej}"
+					suggestionItems="{appData>/filteredData}" suggest="onValueLiveChange" suggestionItemSelected="onSuggestionItemSelected">
+					<suggestionItems>
+						<core:ListItem text="{appData>Zenamej}" additionalText="{appData>Zempoj}"/>
+					</suggestionItems>
+				</Input>
+				<Button text="{i18n>start}" class="StartButton" press="onPressToMachineView" enabled="{appData>/isButtonEnabled}"/>
+			</VBox>
+		</VBox>
+	</App>
+</mvc:View>
+<!--text="{appData>/projectDetailsData/ProjectNumber}"-->
