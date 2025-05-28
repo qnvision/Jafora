@@ -23,6 +23,6 @@
 				<Button text="{i18n>start}" class="StartButton" press="onPressToMachineView" enabled="{appData>/isButtonEnabled}"/>
 			</VBox>
 		</VBox>
+		
 	</App>
 </mvc:View>
-<!--text="{appData>/projectDetailsData/ProjectNumber}"-->
