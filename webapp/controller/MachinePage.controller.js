@@ -73,6 +73,8 @@ sap.ui.define([
 				success: function (oData) {
 					that.appModel.setProperty("/CurrentMachineScanned", machineScan);
 					that.appModel.setProperty("/scannedMachine", oData.results);
+					that.appModel.setProperty("/originalWorkcenter", oData.results[0].Workcenter);
+					
 					// to make linedesc a number 
 					oData.results.forEach(function (item) {
 						// Remove non-numeric characters from Linedesc

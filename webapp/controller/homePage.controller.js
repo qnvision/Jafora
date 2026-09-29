@@ -2,9 +2,9 @@ sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
-	"sap/m/MessageToast"
+	"sap/m/MessageBox"
 
-], function (Controller, Filter, FilterOperator, MessageToast) {
+], function (Controller, Filter, FilterOperator, MessageBox) {
 	"use strict";
 
 	return Controller.extend("Jaf.JaforaMasofon.controller.homePage", {
@@ -40,14 +40,14 @@ sap.ui.define([
 					oInput.focus();
 				}, 500);
 			}
-
+this.getOwnerComponent()
+    .getRouter()
+    .attachRouteMatched(this._onRouteMatched, this);
 		},
+       _onRouteMatched: function (oEvent) {
+			this.appModel.setProperty("/Zenamej", "")
 
-		onKeyDown: function (oEvent) {
-			// Display a message toast with "Hello" when any key is pressed
-			MessageToast.show("Hello");
-		},
-
+       },
 		onValueLiveChange: function (oEvent) {
 			// var sValue = oEvent.getParameter("newValue").trim(); 
 			var sValue = oEvent.getParameters("suggest").suggestValue.trim()
@@ -70,7 +70,6 @@ sap.ui.define([
 				}
 			});
 			oModel.setProperty("/inputValue", sValue);
-			oModel.setProperty("/isButtonEnabled", true);
 		},
 
 		onSuggestionItemSelected: function (oEvent) {
@@ -78,12 +77,27 @@ sap.ui.define([
 			var sSelectedUser = oSelectedItem.getAdditionalText(); // Get the selected user
 			var oModel = this.getOwnerComponent().getModel("appData");
 			oModel.setProperty("/CurrentUser", sSelectedUser); // Save it in CurrentUser
+			oModel.setProperty("/isButtonEnabled", true);
+
 		},
 
 		onPressToMachineView: function () {
+			var oModel = this.getOwnerComponent().getModel("appData");
+			var Zenamej = oModel.getProperty("/Zenamej");
+			var usersData = oModel.getProperty("/filteredData");
+			var exists = usersData.some(function (user) {
+				return user.Zenamej === Zenamej;
+			});
 
-			var router = this.getOwnerComponent().getRouter();
-			router.navTo("MachinePage");
+			if (exists) {
+				var router = this.getOwnerComponent().getRouter();
+				router.navTo("MachinePage");
+			} else {
+				MessageBox.error("המשתמש אינו קיים, אנא בחר משתמש נכון.", {
+
+					dependentOn: this.getView()
+				});
+			}
 
 		},
 		onLanguageButtonPress: function (oEvent) {

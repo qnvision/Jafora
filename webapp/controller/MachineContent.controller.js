@@ -72,7 +72,6 @@ sap.ui.define([
 				var oFlexBox = oListItem.getContent()[0];
 				oFlexBox.removeStyleClass("correctItem");
 			});
-
 			// Continue with scan logic
 			if (/^[A-Za-z]/.test(materialScanResult)) {
 				var oFilter = new sap.ui.model.Filter("Workcenter", "EQ", materialScanResult);
@@ -85,6 +84,7 @@ sap.ui.define([
 						that.appModel.setProperty("/CurrentMachineScanned", materialScanResult);
 
 						var allowedSkuResults = oData.results[0].AllowedSkuNav.results;
+						that.appModel.setProperty("/originalWorkcenter", oData.results[0].Workcenter);
 						oData.results.forEach(function (item) {
 							if (item.Workcenter) {
 								item.Workcenter = item.Workcenter.replace(/\D/g, ''); // Keep only numbers
@@ -107,7 +107,7 @@ sap.ui.define([
 				});
 				// If material scanned
 			} else if (/^[0-9]/.test(materialScanResult)) {
-				var workCenter = this.appModel.getProperty("/scannedMachine/0/Workcenter");
+				var workCenter = this.appModel.getProperty("/originalWorkcenter");
 				var userId = this.appModel.getProperty("/CurrentUser");
 				var sentLanguage = this.appModel.getProperty("/sentLanguage");
 				var oFilter2 = new sap.ui.model.Filter("Workcenter", "EQ", workCenter);

@@ -1,6 +1,7 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="Jaf.JaforaMasofon.controller.homePage"
 	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:ndc="sap.ndc">
 	<App>
+	
 		<VBox class="WholeAppBox">
 			<VBox class="imgBox">
 				<Image src="images/jaforaLogo.png" width="72px" height="47px"/>
@@ -22,6 +23,7 @@
 				</Input>
 				<Button text="{i18n>start}" class="StartButton" press="onPressToMachineView" enabled="{appData>/isButtonEnabled}"/>
 			</VBox>
+			
 		</VBox>
 		
 	</App>
